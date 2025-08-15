@@ -39,3 +39,7 @@
 
 # debug information files
 *.dwo
+
+build/
+builds/
+msg/auto_gen/

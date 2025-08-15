@@ -1,0 +1,35 @@
+module std_msgs
+{
+    /* ===== 基本类型封装 ===== */
+    struct Bool { boolean data; };
+    struct Byte { octet   data; };
+    struct _Char { char    data; };
+    struct Float32 { float   data; };
+    struct Float64 { double  data; };
+    struct Int8 { char   data; };
+    struct Int16 { short   data; };
+    struct Int32 { long    data; };
+    struct Int64 { long long data; };
+    struct UInt8 { octet   data; };
+    struct UInt16 { unsigned short data; };
+    struct UInt32 { unsigned long  data; };
+    struct UInt64 { unsigned long long data; };
+    struct _String { string data; };
+
+    struct ColorRGBA
+    {
+        float r;
+        float g;
+        float b;
+        float a;
+    };
+
+    struct Header
+    {
+        string frame_id;
+        unsigned long sec;
+        unsigned long nanosec;
+    };
+
+    struct Empty {};  // 空消息占位符
+};

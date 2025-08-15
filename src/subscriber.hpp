@@ -1,0 +1,66 @@
+#pragma once
+#include <functional>
+#include <fastdds/dds/subscriber/Subscriber.hpp>
+#include <fastdds/dds/subscriber/DataReader.hpp>
+#include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
+#include <fastdds/dds/subscriber/SampleInfo.hpp>
+
+namespace zclcpp
+{
+    class Node;
+
+    template <typename MsgPubSubType>
+    class Subscription : public eprosima::fastdds::dds::DataReaderListener
+    {
+    public:
+        using MsgT = typename MsgPubSubType::type;
+        using SharedPtr = std::shared_ptr<Subscription<MsgPubSubType>>;
+        using Callback = std::function<void(const typename MsgPubSubType::type&)>;
+
+        Subscription(std::shared_ptr<Node> node,
+            const std::string& topic_name,
+            int qos_depth,
+            Callback cb)
+            : node_(node), cb_(cb)
+        {
+            type_.reset(new MsgPubSubType());
+            type_.register_type(node_->participant());
+
+            topic_ = node_->participant()->find_topic(topic_name, eprosima::fastdds::dds::Duration_t(1));
+            if (topic_ == nullptr)
+            {
+                topic_ = node_->participant()->create_topic(
+                    topic_name, type_.get_type_name(),
+                    eprosima::fastdds::dds::TOPIC_QOS_DEFAULT);
+            }
+
+            sub_ = node_->participant()->create_subscriber(
+                eprosima::fastdds::dds::SUBSCRIBER_QOS_DEFAULT, nullptr);
+
+            eprosima::fastdds::dds::DataReaderQos rqos;
+            rqos.history().kind = eprosima::fastdds::dds::KEEP_LAST_HISTORY_QOS;
+            rqos.history().depth = qos_depth;
+            reader_ = sub_->create_datareader(topic_, rqos, this);
+        }
+
+        void on_data_available(eprosima::fastdds::dds::DataReader* reader) override
+        {
+            MsgT msg;
+            eprosima::fastdds::dds::SampleInfo info;
+            while (reader->take_next_sample(&msg, &info) == eprosima::fastdds::dds::RETCODE_OK)
+            {
+                if (info.valid_data && cb_)
+                    cb_(msg);
+            }
+        }
+
+    private:
+        std::shared_ptr<Node> node_;
+        Callback cb_;
+        eprosima::fastdds::dds::TypeSupport type_;
+        eprosima::fastdds::dds::Topic* topic_{ nullptr };
+        eprosima::fastdds::dds::Subscriber* sub_{ nullptr };
+        eprosima::fastdds::dds::DataReader* reader_{ nullptr };
+    };
+};
+

@@ -1,0 +1,49 @@
+module geometry_msgs
+{
+    struct Point
+    {
+        double x;
+        double y;
+        double z;
+    };
+
+    struct Pose2D
+    {
+        double x;
+        double y;
+        double theta;
+    };
+
+    struct Vector3
+    {
+        double x;
+        double y;
+        double z;
+    };
+
+    struct Quaternion
+    {
+        double x;
+        double y;
+        double z;
+        double w;
+    };
+
+    struct Pose
+    {
+        Point position;
+        Quaternion orientation;
+    };
+
+    struct Transform
+    {
+        Vector3 translation;
+        Quaternion rotation;
+    };
+
+    struct Twist
+    {
+        Vector3 linear;
+        Vector3 angular;
+    };
+};
