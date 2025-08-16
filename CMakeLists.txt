@@ -5,10 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(fastcdr REQUIRED)
 find_package(fastdds REQUIRED)
 
-option(BUILD_EXAMPLE "Build example executable" ON)
+option(BUILD_EXAMPLE "Build example executable" OFF)
 
 set(MSG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/msg)
-set(GEN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/msg/auto_gen/")
+set(GEN_DIR "${CMAKE_CURRENT_BINARY_DIR}/msg/auto_gen/")
 file(MAKE_DIRECTORY ${GEN_DIR})
 
 file(GLOB_RECURSE IDL_FILES "${MSG_DIR}/*.idl")

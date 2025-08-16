@@ -15,13 +15,13 @@ namespace zclcpp
     class Node : public std::enable_shared_from_this<Node>
     {
     public:
-        explicit Node(const std::string& name)
+        explicit Node(const std::string& name, eprosima::fastdds::dds::DomainId_t domain_id = 0)
         {
             eprosima::fastdds::dds::DomainParticipantQos pqos;
             pqos.name(name);
             participant_ =
                 eprosima::fastdds::dds::DomainParticipantFactory::get_instance()
-                ->create_participant(0, pqos);
+                ->create_participant(domain_id, pqos);
         }
 
         ~Node()
