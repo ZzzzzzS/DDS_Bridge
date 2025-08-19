@@ -1,0 +1,12 @@
+#pragma once
+#include "std_msgs.idl"
+#include "DiagnosticStatus.idl"
+
+module diagnostic_msgs
+{
+    struct DiagnosticArray
+    {
+        std_msgs::Header _header; 
+        sequence<diagnostic_msgs::DiagnosticStatus> status;
+    };
+};

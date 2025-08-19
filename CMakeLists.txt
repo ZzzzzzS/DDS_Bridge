@@ -12,17 +12,17 @@ set(MSG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/msg)
 set(GEN_DIR "${CMAKE_CURRENT_BINARY_DIR}/msg/auto_gen/")
 file(MAKE_DIRECTORY ${GEN_DIR})
 
-file(GLOB_RECURSE IDL_FILES "${MSG_DIR}/*.idl")
+file(GLOB IDL_FILES "${MSG_DIR}/*.idl")
 message(STATUS "IDL files found: ${IDL_FILES}")
 
 add_custom_target(gen_comm ALL
-    COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs
+    COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR}
     COMMENT "Running fastddsgen for subscriber ..."
 )
 
 if(WIN32)
     execute_process(
-        COMMAND cmd /c fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs
+        COMMAND cmd /c fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR}
         RESULT_VARIABLE ret
         OUTPUT_VARIABLE out
         ERROR_VARIABLE err
@@ -31,7 +31,7 @@ if(WIN32)
     )
 else()
     execute_process(
-        COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs
+        COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR}
         RESULT_VARIABLE ret
         OUTPUT_VARIABLE out
         ERROR_VARIABLE err

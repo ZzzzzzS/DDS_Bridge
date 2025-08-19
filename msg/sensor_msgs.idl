@@ -1,0 +1,5 @@
+#pragma once
+#include "sensor_msgs/Imu.idl"
+#include "sensor_msgs/JointState.idl"
+#include "sensor_msgs/Image.idl"
+#include "sensor_msgs/Temperature.idl"
