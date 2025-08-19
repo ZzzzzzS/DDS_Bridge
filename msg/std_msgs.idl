@@ -1,3 +1,4 @@
+#pragma once
 module std_msgs
 {
     /* ===== 基本类型封装 ===== */
@@ -32,4 +33,86 @@ module std_msgs
     };
 
     struct Empty {};  // 空消息占位符
+
+     struct MultiArrayDimension
+    {
+        string label;
+        unsigned long size;
+        unsigned long stride;
+    };
+
+    typedef sequence<MultiArrayDimension> MultiArrayDimensionSeq;
+
+    struct MultiArrayLayout
+    {
+        MultiArrayDimensionSeq dim;
+        unsigned long data_offset;   // 通常为 0
+    };
+
+    /* 各种具体数据类型的 MultiArray */
+    struct ByteMultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<octet> data;
+    };
+
+    struct Float32MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<float> data;
+    };
+
+    struct Float64MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<double> data;
+    };
+
+    struct Int8MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<char> data;
+    };
+
+    struct Int16MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<short> data;
+    };
+
+    struct Int32MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<long> data;
+    };
+
+    struct Int64MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<long long> data;
+    };
+
+    struct UInt8MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<octet> data;
+    };
+
+    struct UInt16MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<unsigned short> data;
+    };
+
+    struct UInt32MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<unsigned long> data;
+    };
+
+    struct UInt64MultiArray
+    {
+        MultiArrayLayout layout;
+        sequence<unsigned long long> data;
+    };
 };

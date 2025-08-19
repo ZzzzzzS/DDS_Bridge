@@ -1,3 +1,12 @@
+/**
+ * @file publisher.hpp
+ * @author zishun.zhou (zhouzishun@mail.zzshub.cn)
+ * @brief this file defines the Publisher class for Fast DDS integration.
+ * @version 1.0
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
 #pragma once
 #include <fastdds/dds/publisher/Publisher.hpp>
 #include <fastdds/dds/publisher/DataWriter.hpp>
@@ -9,13 +18,28 @@ namespace zclcpp
 {
     class Node;
 
+    /**
+     * @brief Represents a DDS publisher.
+     *
+     * @tparam MsgPubSubType The message type used for publishing.
+     */
     template <typename MsgPubSubType>
     class Publisher
     {
     public:
+        /// @brief Message type for Publisher.
         using MsgT = typename MsgPubSubType::type;
+
+        /// @brief Shared pointer type for Publisher.
         using SharedPtr = std::shared_ptr<Publisher<MsgPubSubType>>;
 
+        /**
+         * @brief Construct a new Publisher object, it is recommended to use the create_publisher() method of the Node class instead.
+         *
+         * @param node node pointer
+         * @param topic_name The name of the topic
+         * @param qos_depth The QoS depth
+         */
         Publisher(std::shared_ptr<Node> node,
             const std::string& topic_name,
             int qos_depth)
@@ -45,6 +69,11 @@ namespace zclcpp
             writer_ = pub_->create_datawriter(topic_, wqos);
         }
 
+        /**
+         * @brief Publish a message.
+         *
+         * @param msg The message to publish.
+         */
         void publish(const typename MsgPubSubType::type& msg)
         {
             writer_->write(const_cast<MsgT*>(&msg));

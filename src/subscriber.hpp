@@ -1,3 +1,12 @@
+/**
+ * @file subscriber.hpp
+ * @author zishun.zhou (zhouzishun@mail.zzshub.cn)
+ * @brief This file defines the Subscription class for Fast DDS integration.
+ * @version 1.0
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
 #pragma once
 #include <functional>
 #include <fastdds/dds/subscriber/Subscriber.hpp>
@@ -9,14 +18,32 @@ namespace zclcpp
 {
     class Node;
 
+    /**
+     * @brief Represents a DDS subscription.
+     *
+     * @tparam MsgPubSubType The message type used for subscribing.
+     */
     template <typename MsgPubSubType>
     class Subscription : public eprosima::fastdds::dds::DataReaderListener
     {
     public:
+        /// @brief Message type for Subscription.
         using MsgT = typename MsgPubSubType::type;
+
+        /// @brief Shared pointer type for Subscription.
         using SharedPtr = std::shared_ptr<Subscription<MsgPubSubType>>;
+
+        /// @brief Callback type for message reception.
         using Callback = std::function<void(const typename MsgPubSubType::type&)>;
 
+        /**
+         * @brief Construct a new Subscription object, it is recommended to use the create_subscription() method of the Node class instead.
+         *
+         * @param node node pointer
+         * @param topic_name The name of the topic
+         * @param qos_depth The QoS depth
+         * @param cb The callback function
+         */
         Subscription(std::shared_ptr<Node> node,
             const std::string& topic_name,
             int qos_depth,
@@ -43,6 +70,8 @@ namespace zclcpp
             reader_ = sub_->create_datareader(topic_, rqos, this);
         }
 
+        /// @brief internal method to handle data availability, user should NOT call this directly.
+        /// @param reader user should NOT call this directly.
         void on_data_available(eprosima::fastdds::dds::DataReader* reader) override
         {
             MsgT msg;
