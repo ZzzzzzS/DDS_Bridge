@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DDS_Bridge: DDS_Bridge</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">DDS_Bridge
+   </div>
+   <div id="projectbrief">一个基于Fast DDS的DDS桥接库</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">DDS_Bridge </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1 class="doxsection"><a class="anchor" id="autotoc_md0"></a>
+🚀 DDS_Bridge —— 像 ROS 一样用 Fast-DDS</h1>
+<p>一个 <b>极简、零侵入、可扩展</b> 的类ROS2 Fast-DDS 通信框架，让你： <br  />
+</p>
+<ul>
+<li>✨ <b>一条指令</b> 发布 / 订阅任意 IDL 定义的数据结构 <br  />
+</li>
+<li>🛠️ <b>无需手动</b> 编写序列化代码、PubSubType、CMake 规则 <br  />
+</li>
+<li>🔄 <b>直接替换</b> ROS 2 的 <span class="tt">create_publisher / create_subscription</span> 语法</li>
+<li>📦 <b>内置常用类 ROS Topic</b> <br  />
+ 开箱即用的 <span class="tt">std_msgs::String</span>、<span class="tt">geometry_msgs::Pose</span>、<span class="tt">sensor_msgs::Image</span> 等，零配置即可收发。</li>
+</ul>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+1. 快速上手</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+1.1 安装依赖</h3>
+<p><b>Linux:</b></p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+🐧 在 Linux 上安装 eProsima Fast DDS（官方二进制版）</h2>
+<blockquote class="doxtable">
+<p>仅需 3 步，10 分钟完成！ </p>
+</blockquote>
+<hr  />
+<h3 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+1️⃣ 下载并解压</h3>
+<p>进入 <a href="https://www.eprosima.com/index.php/downloads-all">eProsima 官网 Downloads</a> → 选择 <b>Fast DDS Linux 最新版</b> → 解压到任意目录：</p>
+<div class="fragment"><div class="line">tar -xf fastdds-&lt;version&gt;-linux.tar.gz</div>
+<div class="line">cd fastdds-&lt;version&gt;-linux</div>
+</div><!-- fragment --><hr  />
+<h3 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+2️⃣ 一键安装</h3>
+<p>运行官方脚本即可一次性装好 <b>Fast-DDS + 全部依赖</b>(请确保网络畅通)：</p>
+<div class="fragment"><div class="line">sudo ./install.sh</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>Ubuntu20.04 用户可能需要手动移除安装脚本中的python3-xmlschema依赖 </p>
+</blockquote>
+<p><b>Windows:</b></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+🪟 Windows 安装 Fast-DDS（官方二进制版）</h1>
+<p>2 分钟速通指南，含 VS 配置、环境变量与 CMake 链接。</p>
+<hr  />
+<h3 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+1️⃣ 前置条件</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">必须  </th><th class="markdownTableHeadNone">如何安装  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Visual Studio 2019/2022</b>  </td><td class="markdownTableBodyNone">勾选 “Desktop development with C++”  </td></tr>
+</table>
+<hr  />
+<h3 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+2️⃣ 一键安装</h3>
+<ol type="1">
+<li>下载 <b>Fast-DDS Windows Installer</b> <br  />
+ <a href="https://www.eprosima.com/downloads">https://www.eprosima.com/downloads</a></li>
+<li>双击安装 → 选择 VS 版本 &amp; 架构 → 勾选 <b>“Add to PATH”</b> <br  />
+</li>
+<li>完成！组件一览：</li>
+</ol>
+<p>安装后组件一览：</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">包名  </th><th class="markdownTableHeadNone">作用  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">foonathan_memory_vendor</span>  </td><td class="markdownTableBodyNone">STL 兼容内存分配器  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">fastcdr</span>  </td><td class="markdownTableBodyNone">CDR 序列化库  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">fastdds</span>  </td><td class="markdownTableBodyNone">Fast-DDS 核心库  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">fastddsgen</span>  </td><td class="markdownTableBodyNone">通过 IDL 生成代码的 Java 工具  </td></tr>
+</table>
+<hr  />
+<h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+1.2 克隆 &amp; 编译</h3>
+<div class="fragment"><div class="line">git clone https://github.com/ZzzzzzS/DDS_Bridge.git</div>
+<div class="line">cd DDS_Bridge</div>
+<div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">cmake .. -DBUILD_EXAMPLE=ON</div>
+<div class="line">cmake --build .</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+1.3 跑 example</h3>
+<p>编译后运行example即可，输出类似如下</p>
+<div class="fragment"><div class="line">.&quot;./DDS_Bridge/pose_example.exe&quot;</div>
+<div class="line">Hello, Fast DDS!</div>
+<div class="line">Received message: Hello from My Node Fast DDS!</div>
+<div class="line">Received message: Hello from std node Fast DDS!</div>
+<div class="line">Received message: Hello from My Node Fast DDS!</div>
+<div class="line">Received message: Hello from std node Fast DDS!</div>
+<div class="line">Received message: Hello from My Node Fast DDS!</div>
+<div class="line">Received message: Hello from std node Fast DDS!</div>
+</div><!-- fragment --><hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+2. 目录一览</h2>
+<div class="fragment"><div class="line"> bash</div>
+<div class="line">|DDS_Bridge</div>
+<div class="line">│   .gitignore</div>
+<div class="line">│   CMakeLists.txt</div>
+<div class="line">│   LICENSE</div>
+<div class="line">│   README.md</div>
+<div class="line">│</div>
+<div class="line">├───example</div>
+<div class="line">│       example.cpp # 本地收发示例文件</div>
+<div class="line">│</div>
+<div class="line">├───msg # 在这里添加自定义的message type</div>
+<div class="line">│       geometry_msgs.idl</div>
+<div class="line">│       std_msgs.idl</div>
+<div class="line">│</div>
+<div class="line">└───src</div>
+<div class="line">        node.hpp # node类型</div>
+<div class="line">        publisher.hpp # publisher类型</div>
+<div class="line">        subscriber.hpp # subscriber类型</div>
+</div><!-- fragment --><hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+3. 开发新消息</h2>
+<ol type="1">
+<li><p class="startli"><b>写 IDL</b> <br  />
+ 在msg文件夹中创建新idl文件,如<span class="tt">msg/robot_state.idl</span>. idl文件语法请参阅<a href="https://fast-dds.docs.eprosima.com/en/latest/fastddsgen/dataTypes/dataTypes.html">官方文档</a>.</p>
+<div class="fragment"><div class="line">module myapp</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">struct </span>Point { <span class="keywordtype">double</span> x; <span class="keywordtype">double</span> y; };</div>
+<div class="line">    <span class="keyword">struct </span>RobotState { Point pos; <span class="keywordtype">double</span> yaw; };</div>
+<div class="line">};</div>
+</div><!-- fragment --></li>
+<li><p class="startli"><b>重新编译</b></p>
+<div class="fragment"><div class="line">cmake --build build</div>
+</div><!-- fragment --></li>
+<li><p class="startli"><b>代码里直接用</b></p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;robot_state.hpp&quot;</span> <span class="comment">//robot_state idl产生的头文件</span></div>
+<div class="line"><span class="preprocessor">#include &quot;robot_statePubSubTypes.hpp&quot;</span> <span class="comment">//robot_state idl产生的头文件</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> node = std::make_shared&lt;Node&gt;(<span class="stringliteral">&quot;node&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span> pub  = node-&gt;create_publisher&lt;myapp::RobotState&gt;(<span class="stringliteral">&quot;state&quot;</span>, 10);</div>
+<div class="line"><span class="keyword">auto</span> sub  = node-&gt;create_subscription&lt;myapp::RobotState&gt;(</div>
+<div class="line">    <span class="stringliteral">&quot;state&quot;</span>, 10,</div>
+<div class="line">    [](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; s){ std::cout &lt;&lt; s.pos().x() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>; });</div>
+<div class="line"> </div>
+<div class="line">myapp::RobotState st{};</div>
+<div class="line">pub-&gt;publish(st);</div>
+</div><!-- fragment --></li>
+</ol>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+4. API 速查</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">ROS 2 习惯写法  </th><th class="markdownTableHeadNone">fastdds_comm  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">create_publisher&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">✅ 同上  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">create_subscription&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">✅ 同上  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">QoS <span class="tt">depth</span> 参数  </td><td class="markdownTableBodyNone">已支持  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">回调签名  </td><td class="markdownTableBodyNone"><span class="tt">void(const T&amp;)</span>  </td></tr>
+</table>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+5. 构建选项</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">CMake 变量  </th><th class="markdownTableHeadNone">默认值  </th><th class="markdownTableHeadNone">说明  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">BUILD_EXAMPLE</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">编译示例  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">BUILD_DOC</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">编译文档  </td></tr>
+</table>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+6. 性能 &amp; 限制</h2>
+<ul>
+<li><b>零拷贝</b> 发布：直接 <span class="tt">publish(msg&amp;)</span> <br  />
+</li>
+<li><b>内存</b> 每个 topic 一条 <span class="tt">shared_ptr</span> <br  />
+</li>
+<li><b>线程</b> 每条 participant 2-3 条线程（与 ROS 2 相同）</li>
+</ul>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+7. 贡献 &amp; 协议</h2>
+<p>MIT License，欢迎 PR！ <br  />
+ issue → GitHub Discussions。</p>
+<hr  />
+<p> EOF </p>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>
