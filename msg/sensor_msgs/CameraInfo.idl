@@ -1,0 +1,92 @@
+#pragma once
+#include "std_msgs.idl"
+#include "RegionOfInterest.idl"
+
+// ##############################################################################
+// # This message defines meta information for a camera. It should be in a
+// # camera namespace on topic "camera_info" and accompanied by up to five
+// # image topics named:
+// #
+// #   image_raw         - raw data from the camera driver, possibly Bayer encoded
+// #   image             - monochrome, distorted
+// #   image_color       - color, distorted
+// #   image_rect        - monochrome, rectified
+// #   image_rect_color  - color, rectified
+// #
+// # The image_pipeline contains packages (image_proc, stereo_image_proc)
+// # for producing the four processed image topics from image_raw and
+// # camera_info. The meaning of the camera parameters are described in
+// # detail at http://www.ros.org/wiki/image_pipeline/CameraInfo .
+// #
+// # The image_geometry package provides a user-friendly interface to
+// # common operations using this meta information. If you want to, e.g.,
+// # project a 3D point into image coordinates, we strongly recommend
+// # using image_geometry.
+// #
+// # If the camera is uncalibrated, the matrices D, K, R, P should be left
+// # zeroed out. In particular, clients may assume that K[0] == 0.0
+// # indicates an uncalibrated camera.
+
+module sensor_msgs
+{
+    struct CameraInfo
+    {
+        // #######################################################################
+        // #                     Image acquisition info                          #
+        // #######################################################################
+        std_msgs::Header header;
+        // # Header timestamp should be acquisition time of image
+        // # Header frame_id should be optical frame of camera
+        // # origin of frame should be optical center of camera
+        // # +x should point to the right in the image
+        // # +y should point down in the image
+        // # +z should point into the plane of the image
+
+        // #######################################################################
+        // #                      Calibration Parameters                         #
+        // #######################################################################
+        // # These are fixed during camera calibration. Their values will be the #
+        // # same in all messages until the camera is recalibrated. Note that    #
+        // # self-calibrating systems may "recalibrate" frequently.              #
+        // #                                                                     #
+        // # The internal parameters can be used to warp a raw (distorted) image #
+        // # to:                                                                 #
+        // #   1. An undistorted image (requires D and K)                        #
+        // #   2. A rectified image (requires D, K, R)                           #
+        // # The projection matrix P projects 3D points into the rectified image.#
+        // #######################################################################
+
+        unsigned long height;         // # The image dimensions with which the camera was calibrated.
+        unsigned long width;          // # Normally this will be the full camera resolution in pixels.
+
+        string distortion_model;      // # The distortion model used. For most cameras, "plumb_bob".
+        sequence<double> d;           // # Distortion parameters; for "plumb_bob" these are [k1, k2, t1, t2, k3].
+
+        double k[9];                  // # Intrinsic camera matrix (3x3 row-major) for raw (distorted) images.
+                                      // # [fx  0 cx]
+                                      // # [ 0 fy cy]
+                                      // # [ 0  0  1]
+
+        double r[9];                  // # Rectification matrix (3x3 row-major, stereo cameras only).
+
+        double p[12];                 // # Projection/camera matrix (3x4 row-major) for rectified images.
+                                      // # [fx'  0  cx' Tx]
+                                      // # [ 0  fy' cy' Ty]
+                                      // # [ 0   0   1   0]
+
+        // #######################################################################
+        // #                      Operational Parameters                         #
+        // #######################################################################
+        // # These define the image region actually captured by the camera       #
+        // # driver. Although they affect the geometry of the output image, they #
+        // # may be changed freely without recalibrating the camera.             #
+        // #######################################################################
+
+        unsigned long binning_x;      // # Horizontal binning factor (0 or 1 = no binning).
+        unsigned long binning_y;      // # Vertical binning factor (0 or 1 = no binning).
+
+        sensor_msgs::RegionOfInterest roi;
+        // # Region of interest (subwindow) in full-resolution (unbinned) coordinates.
+        // # Default (all zeros) means full resolution.
+    };
+};

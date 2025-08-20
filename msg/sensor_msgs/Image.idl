@@ -1,6 +1,6 @@
 //  This message contains an uncompressed image
 //  (0, 0) is at top-left corner of image
-
+#pragma once
 #include "std_msgs.idl"
 
 module sensor_msgs {

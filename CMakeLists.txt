@@ -46,7 +46,7 @@ message(STATUS "fastddsgen err: ${err}")
 # add all cxx file in msg folder
 file(GLOB_RECURSE MSG_SRC "${GEN_DIR}/*.cxx")
 
-add_library(DDS_Bridge STATIC
+add_library(DDS_Bridge SHARED
     ${MSG_SRC}
 )
 
