@@ -1,4 +1,0 @@
-#pragma once
-#include "diagnostic_msgs/KeyValue.idl"
-#include "diagnostic_msgs/DiagnosticStatus.idl"
-#include "diagnostic_msgs/DiagnosticArray.idl"

@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from geometry_msgs/msg/AccelWithCovariance.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "geometry_msgs/msg/Accel.idl"
+
+module geometry_msgs {
+  module msg {
+    
+    struct AccelWithCovariance {
+      geometry_msgs::msg::Accel accel;
+
+      double covariance[36];
+    };
+  };
+};

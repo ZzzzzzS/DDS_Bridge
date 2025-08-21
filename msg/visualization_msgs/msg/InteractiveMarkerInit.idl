@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from visualization_msgs/msg/InteractiveMarkerInit.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "visualization_msgs/msg/InteractiveMarker.idl"
+
+module visualization_msgs {
+  module msg {
+
+    struct InteractiveMarkerInit {
+      string server_id;
+
+      uint64 seq_num;
+
+      
+      sequence<visualization_msgs::msg::InteractiveMarker> markers;
+    };
+  };
+};

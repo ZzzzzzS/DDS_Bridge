@@ -15,14 +15,14 @@ file(MAKE_DIRECTORY ${GEN_DIR})
 file(GLOB IDL_FILES "${MSG_DIR}/*.idl")
 message(STATUS "IDL files found: ${IDL_FILES}")
 
-add_custom_target(gen_comm ALL
-    COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR}
-    COMMENT "Running fastddsgen for subscriber ..."
-)
+# add_custom_target(gen_comm ALL
+#     COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR} -typeros2
+#     COMMENT "Running fastddsgen for subscriber ..."
+# )
 
 if(WIN32)
     execute_process(
-        COMMAND cmd /c fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR}
+        COMMAND cmd /c fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR} -typeros2
         RESULT_VARIABLE ret
         OUTPUT_VARIABLE out
         ERROR_VARIABLE err
@@ -31,7 +31,7 @@ if(WIN32)
     )
 else()
     execute_process(
-        COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR}
+        COMMAND fastddsgen ${IDL_FILES} -language c++ -d ${GEN_DIR} -replace -cs -I ${MSG_DIR} -typeros2
         RESULT_VARIABLE ret
         OUTPUT_VARIABLE out
         ERROR_VARIABLE err
@@ -46,11 +46,11 @@ message(STATUS "fastddsgen err: ${err}")
 # add all cxx file in msg folder
 file(GLOB_RECURSE MSG_SRC "${GEN_DIR}/*.cxx")
 
-add_library(DDS_Bridge SHARED
+add_library(DDS_Bridge STATIC
     ${MSG_SRC}
 )
 
-add_dependencies(DDS_Bridge gen_comm)
+#add_dependencies(DDS_Bridge gen_comm)
 
 target_include_directories(DDS_Bridge
     PUBLIC
@@ -63,6 +63,8 @@ target_link_libraries(DDS_Bridge PUBLIC fastcdr fastdds)
 if(BUILD_EXAMPLE)
     add_executable(pose_example example/example.cpp)
     target_link_libraries(pose_example PRIVATE DDS_Bridge)
+    add_executable(ros2_comm_example example/comm_ros2.cpp)
+    target_link_libraries(ros2_comm_example PRIVATE DDS_Bridge)
 endif()
 
 if(BUILD_DOC)

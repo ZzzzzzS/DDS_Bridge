@@ -1,0 +1,3 @@
+#include "diagnostic_msgs/msg/DiagnosticArray.idl"
+#include "diagnostic_msgs/msg/DiagnosticStatus.idl"
+#include "diagnostic_msgs/msg/KeyValue.idl"

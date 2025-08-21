@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from sensor_msgs/msg/TimeReference.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "builtin_interfaces/msg/Time.idl"
+#include "std_msgs/msg/Header.idl"
+
+module sensor_msgs {
+  module msg {
+    
+    struct TimeReference {
+
+      std_msgs::msg::Header header;
+
+      
+      builtin_interfaces::msg::Time time_ref;
+
+      
+      string source;
+    };
+  };
+};

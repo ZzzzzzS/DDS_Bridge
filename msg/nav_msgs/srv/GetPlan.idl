@@ -1,0 +1,27 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from nav_msgs/srv/GetPlan.srv
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "geometry_msgs/msg/PoseStamped.idl"
+#include "nav_msgs/msg/Path.idl"
+
+module nav_msgs {
+  module srv {
+    
+    struct GetPlan_Request {
+      
+      geometry_msgs::msg::PoseStamped start;
+
+      
+      geometry_msgs::msg::PoseStamped goal;
+
+
+      float tolerance;
+    };
+    
+    struct GetPlan_Response {
+      nav_msgs::msg::Path plan;
+    };
+  };
+};

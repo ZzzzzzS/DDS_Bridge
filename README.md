@@ -7,8 +7,8 @@
 - ✨ **一条指令** 发布 / 订阅任意 IDL 定义的数据结构  
 - 🛠️ **无需手动** 编写序列化代码、PubSubType、CMake 规则  
 - 🔄 **直接替换** ROS 2 的 `create_publisher / create_subscription` 语法
-- 📦 **内置常用类 ROS Topic**  
-  开箱即用的 `std_msgs::String`、`geometry_msgs::Pose`、`sensor_msgs::Image` 等，零配置即可收发。
+- 📦 **内置常用类 ROS Topic** 开箱即用的[ros common topic](https://index.ros.org/r/common_interfaces/)，零配置即可收发。
+- 🌐 **与 ROS 2 Topic 完全兼容** 仅需在 Topic 名前加前缀 rt/，原 ROS 2 节点无需任何改动即可无缝互通。
 
 ---
 
@@ -143,9 +143,10 @@ Received message: Hello from std node Fast DDS!
    };
    ```
 
-2. **重新编译**
+2. **重新生成与编译**
 
    ```bash
+   cmake -S . -B ./build
    cmake --build build
    ```
 
@@ -167,7 +168,22 @@ Received message: Hello from std node Fast DDS!
 
 ---
 
-## 4. API 速查
+## 4. 与ROS2节点通信
+
+ROS2节点测完全无感知，无需任何修改
+在DDS_Bridge测创建话题时在ROS2话题前加入``"rt/"``前缀，topic数据类型保持不变。例如ROS2发送``std_msgs/string``类型的数据，话题为``/test_topic``,那么DDS_Bridge接收时仅需将话题名称修改为``"rt/test_topic"``。
+
+```c++
+auto std_publisher = std_node->create_publisher<std_msgs::msg::StringPubSubType>("rt/test_topic", 10); //发送
+    auto std_subscription = std_node->create_subscription<std_msgs::msg::StringPubSubType>(
+        "rt/test_topic", 10,
+        [](const std_msgs::msg::String& msg) {
+            std::cout << "Received message: " << msg.data() << std::endl;
+        }); //接收
+
+```
+
+## 5. API 速查
 
 | ROS 2 习惯写法 | fastdds_comm |
 |----------------|--------------|
@@ -178,7 +194,7 @@ Received message: Hello from std node Fast DDS!
 
 ---
 
-## 5. 构建选项
+## 6. 构建选项
 
 | CMake 变量 | 默认值 | 说明 |
 |-----------|--------|------|
@@ -187,7 +203,7 @@ Received message: Hello from std node Fast DDS!
 
 ---
 
-## 6. 性能 & 限制
+## 7. 性能 & 限制
 
 - **零拷贝** 发布：直接 `publish(msg&)`  
 - **内存** 每个 topic 一条 `shared_ptr`  
@@ -195,7 +211,7 @@ Received message: Hello from std node Fast DDS!
 
 ---
 
-## 7. 贡献 & 协议
+## 8. 贡献 & 协议
 
 MIT License，欢迎 PR！  
 issue → GitHub Discussions。

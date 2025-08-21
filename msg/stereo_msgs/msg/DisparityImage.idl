@@ -1,0 +1,37 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from stereo_msgs/msg/DisparityImage.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "sensor_msgs/msg/Image.idl"
+#include "sensor_msgs/msg/RegionOfInterest.idl"
+#include "std_msgs/msg/Header.idl"
+
+module stereo_msgs {
+  module msg {
+
+    struct DisparityImage {
+      std_msgs::msg::Header header;
+
+
+      sensor_msgs::msg::Image image;
+
+ 
+      float f;
+
+      
+      float t;
+
+      
+      sensor_msgs::msg::RegionOfInterest valid_window;
+
+
+      float min_disparity;
+
+      float max_disparity;
+
+
+      float delta_d;
+    };
+  };
+};

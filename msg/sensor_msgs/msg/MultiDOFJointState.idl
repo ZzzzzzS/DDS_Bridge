@@ -1,0 +1,26 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from sensor_msgs/msg/MultiDOFJointState.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "geometry_msgs/msg/Transform.idl"
+#include "geometry_msgs/msg/Twist.idl"
+#include "geometry_msgs/msg/Wrench.idl"
+#include "std_msgs/msg/Header.idl"
+
+module sensor_msgs {
+  module msg {
+
+    struct MultiDOFJointState {
+      std_msgs::msg::Header header;
+
+      sequence<string> joint_names;
+
+      sequence<geometry_msgs::msg::Transform> transforms;
+
+      sequence<geometry_msgs::msg::Twist> twist;
+
+      sequence<geometry_msgs::msg::Wrench> wrench;
+    };
+  };
+};

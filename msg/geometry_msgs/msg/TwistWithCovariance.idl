@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from geometry_msgs/msg/TwistWithCovariance.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "geometry_msgs/msg/Twist.idl"
+
+module geometry_msgs {
+  module msg {
+    
+    struct TwistWithCovariance {
+      geometry_msgs::msg::Twist twist;
+
+
+      double covariance[36];
+    };
+  };
+};

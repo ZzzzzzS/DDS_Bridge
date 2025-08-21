@@ -1,0 +1,35 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from diagnostic_msgs/msg/DiagnosticStatus.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "diagnostic_msgs/msg/KeyValue.idl"
+
+module diagnostic_msgs {
+  module msg {
+    module DiagnosticStatus_Constants {
+      
+      const octet OK = 0;
+      const octet WARN = 1;
+      const octet ERROR = 2;
+      const octet STALE = 3;
+    };
+    
+    struct DiagnosticStatus {
+      
+      octet level;
+
+      
+      string name;
+
+      
+      string message;
+
+      
+      string hardware_id;
+
+      
+      sequence<diagnostic_msgs::msg::KeyValue> values;
+    };
+  };
+};

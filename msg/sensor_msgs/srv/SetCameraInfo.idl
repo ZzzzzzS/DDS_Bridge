@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from sensor_msgs/srv/SetCameraInfo.srv
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "sensor_msgs/msg/CameraInfo.idl"
+
+module sensor_msgs {
+  module srv {
+
+    struct SetCameraInfo_Request {
+      
+      sensor_msgs::msg::CameraInfo camera_info;
+    };
+    struct SetCameraInfo_Response {
+      
+      boolean success;
+
+      
+      string status_message;
+    };
+  };
+};

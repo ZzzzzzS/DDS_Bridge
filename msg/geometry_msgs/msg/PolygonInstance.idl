@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from geometry_msgs/msg/PolygonInstance.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "geometry_msgs/msg/Polygon.idl"
+
+module geometry_msgs {
+  module msg {
+
+    struct PolygonInstance {
+      geometry_msgs::msg::Polygon polygon;
+
+      int64 id;
+    };
+  };
+};

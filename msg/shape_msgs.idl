@@ -1,0 +1,4 @@
+#include "shape_msgs/msg/Mesh.idl"
+#include "shape_msgs/msg/MeshTriangle.idl"
+#include "shape_msgs/msg/Plane.idl"
+#include "shape_msgs/msg/SolidPrimitive.idl"

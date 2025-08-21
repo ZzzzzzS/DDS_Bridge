@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from trajectory_msgs/msg/MultiDOFJointTrajectory.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "std_msgs/msg/Header.idl"
+#include "trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.idl"
+
+module trajectory_msgs {
+  module msg {
+    
+    struct MultiDOFJointTrajectory {
+      std_msgs::msg::Header header;
+
+
+      sequence<string> joint_names;
+
+      sequence<trajectory_msgs::msg::MultiDOFJointTrajectoryPoint> points;
+    };
+  };
+};

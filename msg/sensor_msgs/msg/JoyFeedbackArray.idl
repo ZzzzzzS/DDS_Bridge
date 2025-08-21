@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from sensor_msgs/msg/JoyFeedbackArray.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "sensor_msgs/msg/JoyFeedback.idl"
+
+module sensor_msgs {
+  module msg {
+    
+    struct JoyFeedbackArray {
+      sequence<sensor_msgs::msg::JoyFeedback> array;
+    };
+  };
+};

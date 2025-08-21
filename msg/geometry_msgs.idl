@@ -1,210 +1,32 @@
-#pragma once
-#include "std_msgs.idl"
-module geometry_msgs
-{
-    struct Point
-    {
-        double x;
-        double y;
-        double z;
-    };
-
-    struct PointStamped
-    {
-        std_msgs::Header _header;
-        Point _point;
-    };
-
-    struct Point32
-    {
-        float x;
-        float y;
-        float z;
-    };
-
-    struct Pose2D
-    {
-        double x;
-        double y;
-        double theta;
-    };
-
-    struct Vector3
-    {
-        double x;
-        double y;
-        double z;
-    };
-
-    struct Vector3Stamped
-    {
-        std_msgs::Header _header; 
-        Vector3 vector;
-    };
-
-    struct Quaternion
-    {
-        double x;
-        double y;
-        double z;
-        double w;
-    };
-
-    struct QuaternionStamped
-    {
-        std_msgs::Header _header;
-        Quaternion _quaternion;
-    };
-
-    struct Pose
-    {
-        Point position;
-        Quaternion orientation;
-    };
-
-    struct PoseStamped
-    {
-        std_msgs::Header _header;
-        Pose _pose;
-    };
-
-    struct Transform
-    {
-        Vector3 translation;
-        Quaternion rotation;
-    };
-
-    struct TransformStamped
-    {
-        std_msgs::Header _header;
-        Transform _transform;
-    };
-
-    struct Twist
-    {
-        Vector3 linear;
-        Vector3 angular;
-    };
-
-    struct TwistStamped
-    {
-      std_msgs::Header _header;  
-      Twist _twist;
-    };
-
-    struct Accel
-    {
-      Vector3 linear;
-      Vector3 anguler;  
-    };
-
-    struct AccelStamped
-    {
-        std_msgs::Header _header;
-        Accel _accel;
-    };
-
-    struct AccelWithCovariance
-    {
-        Accel _accel;
-        double covariance[36];
-    };
-
-    struct AccelWithCovarianceStamped
-    {
-        std_msgs::Header _header;
-        AccelWithCovariance _accel;
-    };
-
-
-    struct Inertia
-    {
-        //Mass [kg]
-        double m;
-
-        //Center of mass [m]
-        Vector3 com;
-
-        // Inertia Tensor [kg-m^2]
-        //     | ixx ixy ixz |
-        // I = | ixy iyy iyz |
-        //     | ixz iyz izz |
-        double ixx;
-        double ixy;
-        double ixz;
-        double iyy;
-        double iyz;
-        double izz;
-    };
-
-    struct InertiaStamped
-    {
-        std_msgs::Header _header;
-        Inertia inertia;
-    };
-
-    struct Polygon
-    {
-        sequence<Point32> points;
-    };
-
-    struct PolygonStamped
-    {
-        std_msgs::Header _header;
-        Polygon _polygon;
-    };
-
-    struct PolygonInstance
-    {
-        Polygon _polygon;
-        long long id;
-    };
-
-    struct PolygonInstanceStamped
-    {
-        std_msgs::Header _header;
-        PolygonInstance _polygon;
-    };
-
-    struct PoseArray
-    {
-        std_msgs::Header _header;
-        sequence<Pose> poses;
-    };
-
-    struct PoseWithCovariance
-    {
-        Pose _pose;
-        double covariance[36];
-    };
-
-    struct PoseWithCovarianceStamped
-    {
-        std_msgs::Header _header;
-        PoseWithCovariance _pose;
-    };
-
-    struct TwistWithCovariance
-    {
-        Twist _twist;
-        double covariance[36];
-    };
-
-    struct TwistWithCovarianceStamped
-    {
-        std_msgs::Header _header; 
-        TwistWithCovariance twist;
-    };
-
-    struct Wrench
-    {
-        Vector3 force;
-        Vector3 torque;
-    };
-
-    struct WrenchStamped
-    {
-        std_msgs::Header _header; 
-        Wrench _wrench;
-    };
-};
+#include "geometry_msgs/msg/Accel.idl"
+#include "geometry_msgs/msg/AccelStamped.idl"
+#include "geometry_msgs/msg/AccelWithCovariance.idl"
+#include "geometry_msgs/msg/AccelWithCovarianceStamped.idl"
+#include "geometry_msgs/msg/Inertia.idl"
+#include "geometry_msgs/msg/InertiaStamped.idl"
+#include "geometry_msgs/msg/Point.idl"
+#include "geometry_msgs/msg/Point32.idl"
+#include "geometry_msgs/msg/PointStamped.idl"
+#include "geometry_msgs/msg/Polygon.idl"
+#include "geometry_msgs/msg/PolygonInstance.idl"
+#include "geometry_msgs/msg/PolygonInstanceStamped.idl"
+#include "geometry_msgs/msg/PolygonStamped.idl"
+#include "geometry_msgs/msg/Pose.idl"
+#include "geometry_msgs/msg/Pose2D.idl"
+#include "geometry_msgs/msg/PoseArray.idl"
+#include "geometry_msgs/msg/PoseStamped.idl"
+#include "geometry_msgs/msg/PoseWithCovariance.idl"
+#include "geometry_msgs/msg/PoseWithCovarianceStamped.idl"
+#include "geometry_msgs/msg/Quaternion.idl"
+#include "geometry_msgs/msg/QuaternionStamped.idl"
+#include "geometry_msgs/msg/Transform.idl"
+#include "geometry_msgs/msg/TransformStamped.idl"
+#include "geometry_msgs/msg/Twist.idl"
+#include "geometry_msgs/msg/TwistStamped.idl"
+#include "geometry_msgs/msg/TwistWithCovariance.idl"
+#include "geometry_msgs/msg/TwistWithCovarianceStamped.idl"
+#include "geometry_msgs/msg/Vector3.idl"
+#include "geometry_msgs/msg/Vector3Stamped.idl"
+#include "geometry_msgs/msg/VelocityStamped.idl"
+#include "geometry_msgs/msg/Wrench.idl"
+#include "geometry_msgs/msg/WrenchStamped.idl"

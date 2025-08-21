@@ -1,0 +1,40 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from sensor_msgs/msg/PointCloud2.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "sensor_msgs/msg/PointField.idl"
+#include "std_msgs/msg/Header.idl"
+
+module sensor_msgs {
+  module msg {
+
+    struct PointCloud2 {
+      
+      std_msgs::msg::Header header;
+
+
+      uint32 height;
+
+      uint32 width;
+
+      
+      sequence<sensor_msgs::msg::PointField> fields;
+
+      
+      boolean is_bigendian;
+
+      
+      uint32 point_step;
+
+      
+      uint32 row_step;
+
+      
+      sequence<uint8> data;
+
+      
+      boolean is_dense;
+    };
+  };
+};

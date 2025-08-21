@@ -1,0 +1,4 @@
+#include "trajectory_msgs/msg/JointTrajectory.idl"
+#include "trajectory_msgs/msg/JointTrajectoryPoint.idl"
+#include "trajectory_msgs/msg/MultiDOFJointTrajectory.idl"
+#include "trajectory_msgs/msg/MultiDOFJointTrajectoryPoint.idl"

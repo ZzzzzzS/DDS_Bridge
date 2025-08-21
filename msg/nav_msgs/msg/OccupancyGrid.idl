@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from nav_msgs/msg/OccupancyGrid.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "nav_msgs/msg/MapMetaData.idl"
+#include "std_msgs/msg/Header.idl"
+
+module nav_msgs {
+  module msg {
+    
+    struct OccupancyGrid {
+      std_msgs::msg::Header header;
+
+      
+      nav_msgs::msg::MapMetaData info;
+
+      
+      sequence<int8> data;
+    };
+  };
+};

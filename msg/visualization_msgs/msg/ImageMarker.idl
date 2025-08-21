@@ -1,0 +1,63 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from visualization_msgs/msg/ImageMarker.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "builtin_interfaces/msg/Duration.idl"
+#include "geometry_msgs/msg/Point.idl"
+#include "std_msgs/msg/ColorRGBA.idl"
+#include "std_msgs/msg/Header.idl"
+
+module visualization_msgs {
+  module msg {
+    module ImageMarker_Constants {
+      const int32 CIRCLE = 0;
+      const int32 LINE_STRIP = 1;
+      const int32 LINE_LIST = 2;
+      const int32 POLYGON = 3;
+      const int32 POINTS = 4;
+      const int32 ADD = 0;
+      const int32 REMOVE = 1;
+    };
+    struct ImageMarker {
+      std_msgs::msg::Header header;
+
+      
+      string ns;
+
+      
+      int32 id;
+
+      
+      int32 type;
+
+      
+      int32 action;
+
+      
+      geometry_msgs::msg::Point position;
+
+      
+      float scale;
+
+      
+      std_msgs::msg::ColorRGBA outline_color;
+
+      
+      uint8 filled;
+
+      
+      @unit (value="0.0-1.0")
+      std_msgs::msg::ColorRGBA fill_color;
+
+
+      builtin_interfaces::msg::Duration lifetime;
+
+      
+      sequence<geometry_msgs::msg::Point> points;
+
+      
+      sequence<std_msgs::msg::ColorRGBA> outline_colors;
+    };
+  };
+};

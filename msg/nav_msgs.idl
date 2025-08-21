@@ -1,0 +1,6 @@
+#include "nav_msgs/msg/Goals.idl"
+#include "nav_msgs/msg/GridCells.idl"
+#include "nav_msgs/msg/MapMetaData.idl"
+#include "nav_msgs/msg/OccupancyGrid.idl"
+#include "nav_msgs/msg/Odometry.idl"
+#include "nav_msgs/msg/Path.idl"

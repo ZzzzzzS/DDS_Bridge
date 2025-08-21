@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from std_msgs/msg/Int64MultiArray.msg
+// generated code does not contain a copyright notice
+#pragma once
+
+#include "std_msgs/msg/MultiArrayLayout.idl"
+
+module std_msgs {
+  module msg {
+    struct Int64MultiArray {
+      std_msgs::msg::MultiArrayLayout layout;
+
+      
+      sequence<int64> data;
+    };
+  };
+};
