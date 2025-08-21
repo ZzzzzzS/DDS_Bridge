@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['协议_0',['7. 贡献 &amp;amp; 协议',['../index.html#autotoc_md28',1,'']]]
+  ['克隆_20编译_0',['1.2 克隆 &amp;amp; 编译',['../index.html#autotoc_md15',1,'']]]
 ];

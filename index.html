@@ -110,8 +110,8 @@ $(function(){initNavTree('index.html','',''); });
 <li>🛠️ <b>无需手动</b> 编写序列化代码、PubSubType、CMake 规则 <br  />
 </li>
 <li>🔄 <b>直接替换</b> ROS 2 的 <span class="tt">create_publisher / create_subscription</span> 语法</li>
-<li>📦 <b>内置常用类 ROS Topic</b> <br  />
- 开箱即用的 <span class="tt">std_msgs::String</span>、<span class="tt">geometry_msgs::Pose</span>、<span class="tt">sensor_msgs::Image</span> 等，零配置即可收发。</li>
+<li>📦 <b>内置常用类 ROS Topic</b> 开箱即用的<a href="https://index.ros.org/r/common_interfaces/">ros common topic</a>，零配置即可收发。</li>
+<li>🌐 <b>与 ROS 2 Topic 完全兼容</b> 仅需在 Topic 名前加前缀 rt/，原 ROS 2 节点无需任何改动即可无缝互通。</li>
 </ul>
 <hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
@@ -226,8 +226,9 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">    <span class="keyword">struct </span>RobotState { Point pos; <span class="keywordtype">double</span> yaw; };</div>
 <div class="line">};</div>
 </div><!-- fragment --></li>
-<li><p class="startli"><b>重新编译</b></p>
-<div class="fragment"><div class="line">cmake --build build</div>
+<li><p class="startli"><b>重新生成与编译</b></p>
+<div class="fragment"><div class="line">cmake -S . -B ./build</div>
+<div class="line">cmake --build build</div>
 </div><!-- fragment --></li>
 <li><p class="startli"><b>代码里直接用</b></p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;robot_state.hpp&quot;</span> <span class="comment">//robot_state idl产生的头文件</span></div>
@@ -245,7 +246,16 @@ $(function(){initNavTree('index.html','',''); });
 </ol>
 <hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
-4. API 速查</h2>
+4. 与ROS2节点通信</h2>
+<p>ROS2节点测完全无感知，无需任何修改 在DDS_Bridge测创建话题时在ROS2话题前加入<span class="tt">"rt/"</span>前缀，topic数据类型保持不变。例如ROS2发送<span class="tt">std_msgs/string</span>类型的数据，话题为<span class="tt">/test_topic</span>,那么DDS_Bridge接收时仅需将话题名称修改为<span class="tt">"rt/test_topic"</span>。</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> std_publisher = std_node-&gt;create_publisher&lt;std_msgs::msg::StringPubSubType&gt;(<span class="stringliteral">&quot;rt/test_topic&quot;</span>, 10); <span class="comment">//发送</span></div>
+<div class="line">    <span class="keyword">auto</span> std_subscription = std_node-&gt;create_subscription&lt;std_msgs::msg::StringPubSubType&gt;(</div>
+<div class="line">        <span class="stringliteral">&quot;rt/test_topic&quot;</span>, 10,</div>
+<div class="line">        [](<span class="keyword">const</span> std_msgs::msg::String&amp; msg) {</div>
+<div class="line">            std::cout &lt;&lt; <span class="stringliteral">&quot;Received message: &quot;</span> &lt;&lt; msg.data() &lt;&lt; std::endl;</div>
+<div class="line">        }); <span class="comment">//接收</span></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+5. API 速查</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">ROS 2 习惯写法  </th><th class="markdownTableHeadNone">fastdds_comm  </th></tr>
@@ -259,8 +269,8 @@ $(function(){initNavTree('index.html','',''); });
 <td class="markdownTableBodyNone">回调签名  </td><td class="markdownTableBodyNone"><span class="tt">void(const T&amp;)</span>  </td></tr>
 </table>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
-5. 构建选项</h2>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+6. 构建选项</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">CMake 变量  </th><th class="markdownTableHeadNone">默认值  </th><th class="markdownTableHeadNone">说明  </th></tr>
@@ -270,8 +280,8 @@ $(function(){initNavTree('index.html','',''); });
 <td class="markdownTableBodyNone"><span class="tt">BUILD_DOC</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">编译文档  </td></tr>
 </table>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
-6. 性能 &amp; 限制</h2>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+7. 性能 &amp; 限制</h2>
 <ul>
 <li><b>零拷贝</b> 发布：直接 <span class="tt">publish(msg&amp;)</span> <br  />
 </li>
@@ -280,8 +290,8 @@ $(function(){initNavTree('index.html','',''); });
 <li><b>线程</b> 每条 participant 2-3 条线程（与 ROS 2 相同）</li>
 </ul>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
-7. 贡献 &amp; 协议</h2>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+8. 贡献 &amp; 协议</h2>
 <p>MIT License，欢迎 PR！ <br  />
  issue → GitHub Discussions。</p>
 <hr  />

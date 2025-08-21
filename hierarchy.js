@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "eprosima::fastdds::dds::DataReaderListener", null, [
+      [ "zclcpp::Subscription< std_msgs::msg::StringPubSubType >", "classzclcpp_1_1_subscription.html", null ],
       [ "zclcpp::Subscription< MsgPubSubType >", "classzclcpp_1_1_subscription.html", null ]
     ] ],
     [ "std::enable_shared_from_this", null, [

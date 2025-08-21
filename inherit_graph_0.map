@@ -1,5 +1,7 @@
 <map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,172,48"/>
-<area shape="rect" id="Node000001" href="$classzclcpp_1_1_subscription.html" title="Represents a DDS subscription." alt="" coords="220,5,364,48"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="187,24,219,24,219,29,187,29"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,51,172,93"/>
+<area shape="rect" id="Node000001" href="$classzclcpp_1_1_subscription.html" title=" " alt="" coords="220,5,431,64"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="186,54,219,49,220,54,187,59"/>
+<area shape="rect" id="Node000002" href="$classzclcpp_1_1_subscription.html" title="Represents a DDS subscription." alt="" coords="253,88,398,131"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="187,85,253,95,252,101,186,90"/>
 </map>

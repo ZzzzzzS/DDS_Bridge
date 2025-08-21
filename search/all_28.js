@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['限制_0',['6. 性能 &amp;amp; 限制',['../index.html#autotoc_md26',1,'']]]
+  ['跑_20example_0',['1.3 跑 example',['../index.html#autotoc_md16',1,'']]]
 ];

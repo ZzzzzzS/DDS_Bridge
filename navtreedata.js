@@ -37,10 +37,11 @@ var NAVTREE =
     [ "🪟 Windows 安装 Fast-DDS（官方二进制版）", "index.html#autotoc_md9", [
       [ "2. 目录一览", "index.html#autotoc_md18", null ],
       [ "3. 开发新消息", "index.html#autotoc_md20", null ],
-      [ "4. API 速查", "index.html#autotoc_md22", null ],
-      [ "5. 构建选项", "index.html#autotoc_md24", null ],
-      [ "6. 性能 &amp; 限制", "index.html#autotoc_md26", null ],
-      [ "7. 贡献 &amp; 协议", "index.html#autotoc_md28", null ]
+      [ "4. 与ROS2节点通信", "index.html#autotoc_md22", null ],
+      [ "5. API 速查", "index.html#autotoc_md23", null ],
+      [ "6. 构建选项", "index.html#autotoc_md25", null ],
+      [ "7. 性能 &amp; 限制", "index.html#autotoc_md27", null ],
+      [ "8. 贡献 &amp; 协议", "index.html#autotoc_md29", null ]
     ] ],
     [ "命名空间", "namespaces.html", [
       [ "命名空间列表", "namespaces.html", "namespaces_dup" ]

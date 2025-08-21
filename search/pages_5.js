@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['6_20性能_20限制_0',['6. 性能 &amp;amp; 限制',['../index.html#autotoc_md26',1,'']]]
+  ['6_20构建选项_0',['6. 构建选项',['../index.html#autotoc_md25',1,'']]]
 ];

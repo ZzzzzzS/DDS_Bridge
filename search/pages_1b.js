@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['构建选项_0',['5. 构建选项',['../index.html#autotoc_md24',1,'']]]
+  ['快速上手_0',['1. 快速上手',['../index.html#autotoc_md2',1,'']]]
 ];

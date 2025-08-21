@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['5_20构建选项_0',['5. 构建选项',['../index.html#autotoc_md24',1,'']]]
+  ['5_20api_20速查_0',['5. API 速查',['../index.html#autotoc_md23',1,'']]]
 ];
